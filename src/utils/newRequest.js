@@ -1,13 +1,14 @@
 import axios from "axios";
 
 const newRequest = axios.create({
-  baseURL: "http://localhost:8800/api/",
+  baseURL: "https://fiverr-backend-q76q.onrender.com/api/",
   withCredentials: true,
 });
+
 newRequest.interceptors.request.use((config) => {
-  const token = localStorage.getItem("accessToken"); // this is where the token is stored
+  const token = localStorage.getItem("accessToken");
   if (token) {
-    config.headers.Authorization = `Bearer ${token}`; // send token to backend
+    config.headers.Authorization = `Bearer ${token}`;
   }
   return config;
 });
